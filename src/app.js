@@ -6,6 +6,7 @@ const request = require('request');
 const geoCode = require('./utils/geoCode.js');
 const foreCast = require('./utils/forecast.js');
 
+const port = process.env.PORT || 3000;
 
 //Define path for Express config
 const publicDirectoryPath = path.join(__dirname,'../public');
@@ -17,12 +18,6 @@ const partialsPath = path.join(__dirname,'../templates/partials')
 app.set('view engine','hbs');
 app.set('views',viewsPath);
 hbs.registerPartials(partialsPath);
-
-
-/*
-
-*/
-
 
 app.use(express.static(publicDirectoryPath));
 
@@ -84,11 +79,7 @@ app.get('/weather',(req,res)=>{
     });
 
     console.log(req.query.address);
-    // res.send({
-    //     location:'Palasa , Andhra pradesh',
-    //     forecast:'25',
-    //     address:req.query.address
-    // });
+   
 })
 
 
@@ -99,7 +90,6 @@ app.get('/weather',(req,res)=>{
 app.get('/products',(req,res)=>{
     if(!req.query.search)
     {
-        //we need to use return to stop this error
        return  res.send({
             error:'You must provide a search term'
         })
@@ -109,31 +99,7 @@ app.get('/products',(req,res)=>{
         products:[]
     })
 })
-/*
-So our goal is to figure out
 
-how to get this data in the client side JavaScript file.
-
-Then you'll use what we've learned to get this data
-
-in the client side JavaScript file.
-*/
-
-
-
-
-
-
-
-
-
-/*
-So by using the wild card character, we can match
-
-either every request or we can match a bunch
-
-of requests that match a specific pattern.
-*/
 
 app.get('/help/*',(req,res)=> {
     res.render('404',{
@@ -153,14 +119,8 @@ app.get('*',(req,res)=>{
 
 
 
-app.listen(3000,()=>{
-    console.log('Server is up on port 3000')
+app.listen(port,()=>{
+    console.log('Server is up on port '+port)
 })
-/*
-The first thing we need to do is make sure the
 
-program is running and then after that
 
-we're going to register our new private key file.
-
-*/
