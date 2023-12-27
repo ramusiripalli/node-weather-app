@@ -20,16 +20,12 @@ app.set('views',viewsPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
-
-
 app.get('',(req,res)=>{
 res.render('index',{
     title:'Weather App',
     name:'Ramu Siripalli'
 })
 })
-
-
 
 app.get('/help',(req,res)=>{
 res.render('help',{
@@ -82,11 +78,6 @@ app.get('/weather',(req,res)=>{
    
 })
 
-
-
-
-
-
 app.get('/products',(req,res)=>{
     if(!req.query.search)
     {
@@ -99,7 +90,6 @@ app.get('/products',(req,res)=>{
         products:[]
     })
 })
-
 
 app.get('/help/*',(req,res)=> {
     res.render('404',{
@@ -116,8 +106,6 @@ app.get('*',(req,res)=>{
         errorMessage:'Page not found'
     });
 })
-
-
 
 app.listen(port,()=>{
     console.log('Server is up on port '+port)

@@ -14,10 +14,6 @@ body{
     flex-grow: 1;
 }
 
-/* And we're going to apply one more flex box style. This one is called Flex hyphen Grow.
-This allows a given element to grow to take up as much space as it needs. We're gonna set this to one which tells flex box
-that the main content should take up all leftover space. */
-
 footer{
     color:#888888;
     border-top: 1px solid #eeeeee;
